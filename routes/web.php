@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 use App\Http\Controllers\PostController;
 use Doctrine\DBAL\Driver\Middleware;
-
+use App\Http\Middleware\Admin;
 
 // home page
 Route::redirect('/','posts')->name('home');    
@@ -37,7 +37,7 @@ Route::middleware('auth')->group(function(){
 
 });
 
-Route::middleware('auth')->group(function(){
+Route::middleware(['auth', Admin::class])->group(function(){
     //admin page
     Route::get('/admin', [adminDBcontroller::class, 'index'])->name('admin');   
     //admin to see registered users
