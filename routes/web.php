@@ -41,6 +41,7 @@ Route::middleware('auth')->group(function(){
     //admin page
     Route::get('/admin', [adminDBcontroller::class, 'index'])->name('admin');   
     //admin to see registered users
-    Route::get('/admin/users', [adminDBcontroller::class, 'usermanagement'])->name('admin.users');
-    
+    Route::get('/admin/users', [adminDBcontroller::class, 'show'])->name('admin.users');
+    //admin to see registered admins
+    Route::get('/admin/admins', [adminDBcontroller::class,'adminshow'])->name('admin.admins');
 });

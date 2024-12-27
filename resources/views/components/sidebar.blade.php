@@ -12,11 +12,15 @@
         <a href="{{route('admin')}}" class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-500 text-white">
             <ion-icon name="home-outline" size="small"></ion-icon>
             <span class="text-[15px] ml-3">Home</span>
-        </a href="">
+        </a>
+        <a href="{{route('admin.admins')}}" class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-500 text-white">
+            <ion-icon name="person-outline" size="small"></ion-icon>
+            <span class="text-[15px] ml-3">Admin</span>
+        </a>
         <a href="{{route('admin.users')}}" class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-500 text-white">
             <ion-icon name="people-outline" size="small"></ion-icon>
             <span class="text-[15px] ml-3">User Management</span>
-        </a >
+        </a>
         <hr class="my-2 text-gray-600">
         <div class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-500 text-white">
             <ion-icon name="log-out-outline" size="small"></ion-icon>

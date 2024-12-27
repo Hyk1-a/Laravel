@@ -12,9 +12,17 @@ class adminDBcontroller extends Controller
         return view('admin.dashboard');
     }
 
-    public function usermanagement(){
+    public function show(){
+
         $users = User::all();
         return view('admin.usermanagement',compact('users'));
+
+    }
+    public function adminshow(){
+
+        $users = User::all();
+        return view('admin.adminManagement',compact('users'));
+        
     }
 }
 
