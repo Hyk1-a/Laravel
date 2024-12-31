@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{env ('APP_NAME')}}</title>
-    <link rel="icon" type="image/png" href="{{asset('image/instalogo.png')}}">
+    <link rel="icon" type="image/png" href="{{ asset('image/instalogo.png')}}">
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
@@ -19,7 +19,7 @@
                 {{-- Drop Down button --}}
                 <div class="relative grid place-items-center" x-data="{ open: false }">
                     <button x-on:click="open = !open" type="button" class="round-btn">
-                        <img src="{{asset('image/cat.jpg')}}" alt="Cat">
+                        <img src="{{ asset('image/cat.jpg')}}" alt="Cat">
                     </button>
                     <div x-show="open" @click.outside="open = false" class="bg-white shadow-lg border-r-gray-500 absolute top-10 right-0 rounded-lg overflow-hidden font-light">
                         <p class="font-sans text-md p-2 pl-4 ">{{auth()->user()->username}}</p>

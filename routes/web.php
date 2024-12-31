@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\adminDBcontroller;
+use App\Http\Controllers\adminUsercontroller;
 use App\Http\Controllers\authcontroller;
 use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
@@ -44,4 +45,18 @@ Route::middleware(['auth', Admin::class])->group(function(){
     Route::get('/admin/users', [adminDBcontroller::class, 'show'])->name('admin.users');
     //admin to see registered admins
     Route::get('/admin/admins', [adminDBcontroller::class,'adminshow'])->name('admin.admins');
+    //admin to edit users
+    Route::view('/admin/users/edit/{user}', 'admin.userEdit')->name('edituser');
+    //admin to add user
+    Route::get('/admin/users/add', [adminUsercontroller::class, 'create'])->name('adduser');
+    //admin to delete user
+    Route::delete('/users/{id}', [adminUsercontroller::class, 'destroy'])->name('deleteuser');
+    //route to store user
+    Route::post('/admin/users/store', [adminUsercontroller::class, 'store'])->name('storeuser');
+    //Route to edit user
+    Route::get('/admin/users/edit/{id}', [adminUsercontroller::class, 'edit'])->name('edituser');
+
+    Route::put('/admin/users/{id}', [adminUsercontroller::class, 'update'])->name('updateuser');
+
+
 });

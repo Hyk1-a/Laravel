@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Gate;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Support\Facades\Storage;
+use App\Policies;
 
 class PostController extends Controller implements HasMiddleware
 {
@@ -83,6 +84,7 @@ class PostController extends Controller implements HasMiddleware
      */
     public function edit(Post $post)
     {
+        
         //Authorize
         Gate::authorize('modify', $post);
         return view ('posts.edit',['post'=> $post]);
@@ -93,8 +95,11 @@ class PostController extends Controller implements HasMiddleware
      */
     public function update(Request $request, Post $post)
     {
+    
         //Authorize
         Gate::authorize('modify', $post);
+
+        dd(Auth::user()->id, $post->user_id);
 
          //Validate
         $request->validate([
@@ -103,13 +108,12 @@ class PostController extends Controller implements HasMiddleware
             'image'=>['nullable', 'file', 'max:5000', 'mimes:png,jpg,jpeg,webp'],
 
         ]); 
+        
         //Store image
         $path = $post->image ?? null;
         if ($request->hasFile('image')){
             if($post->image){
                 Storage::disk('public')->delete($post->image); 
-                
-
             }
 
             $path = Storage::disk('public')->put('posts_image', $request->image);
@@ -132,6 +136,7 @@ class PostController extends Controller implements HasMiddleware
      */
     public function destroy(Post $post)
     {   
+    
         //Authorize
         Gate::authorize('modify', $post);
 
@@ -139,7 +144,6 @@ class PostController extends Controller implements HasMiddleware
             Storage::disk('public')->delete($post->image); 
 
         }
-
         //Delete
         $post->delete();
         return back()->with('delete','Post deleted successfully');

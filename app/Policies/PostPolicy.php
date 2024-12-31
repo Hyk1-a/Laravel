@@ -10,6 +10,6 @@ class PostPolicy
 {
     public function modify(User $user, Post $post): bool
     {
-        return $user->id === $post->user_id;
+        return $user->id === (int) $post->user_id;
     }
 }
