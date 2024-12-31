@@ -46,7 +46,10 @@
             <div class="mb-5">
                 <label for="usertype">Usertype</label>
                 <div  class="input">
-                    <input type="text" name="usertype">
+                    <select name="usertype" id="usertype" class="border border-gray-300 rounded w-full px-4 py-2">
+                        <option value="user" {{ old('usertype') == 'user' ? 'selected' : '' }}>User</option>
+                        <option value="admin" {{ old('usertype') == 'admin' ? 'selected' : '' }}>Admin</option>
+                    </select>                
                 </div>
             </div>
 

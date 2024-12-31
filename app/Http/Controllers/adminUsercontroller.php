@@ -21,7 +21,7 @@ class adminUsercontroller extends Controller
             'username' => 'required|string|max:255',
             'email' => 'required|email|unique:users',
             'password' => 'required|min:6',
-            'usertype' => 'required|string',
+            'usertype' => 'required|in:user,admin',
         ]);
 
         User::create([
@@ -36,8 +36,11 @@ class adminUsercontroller extends Controller
     
     public function edit($id)
     {
-        $user = User::findOrFail($id);
-        return view('admin.userEdit', compact('user'));
+        $user = User::findorFail($id);
+        if (!$user) { 
+            return redirect()->back()->with('error', 'User not found'); 
+        }
+        return view('admin.userEdit', ['user' => $user]);
     }
     
 
@@ -48,7 +51,7 @@ class adminUsercontroller extends Controller
         $request->validate([
             'username' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email,' . $user->id,
-            'usertype' => 'required|string',
+            'usertype' => 'required|in:user,admin',
         ]);
 
         $user->update([
@@ -59,6 +62,7 @@ class adminUsercontroller extends Controller
 
         return redirect()->route('admin.users')->with('success', 'User updated successfully!');
     }
+    
     public function destroy($id)
     {
         $user = User::findOrFail($id);

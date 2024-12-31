@@ -54,9 +54,8 @@ Route::middleware(['auth', Admin::class])->group(function(){
     //route to store user
     Route::post('/admin/users/store', [adminUsercontroller::class, 'store'])->name('storeuser');
     //Route to edit user
-    Route::get('/admin/users/edit/{id}', [adminUsercontroller::class, 'edit'])->name('edituser');
-
-    Route::put('/admin/users/{id}', [adminUsercontroller::class, 'update'])->name('updateuser');
-
+    Route::get('/admin/edit/{id}', [adminUsercontroller::class, 'edit'])->name('edituser');
+    //Route to update user
+    Route::put('/admin/edit/{id}', [adminUsercontroller::class, 'update'])->name('updateuser');
 
 });

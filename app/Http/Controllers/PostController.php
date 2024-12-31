@@ -84,7 +84,6 @@ class PostController extends Controller implements HasMiddleware
      */
     public function edit(Post $post)
     {
-        
         //Authorize
         Gate::authorize('modify', $post);
         return view ('posts.edit',['post'=> $post]);
@@ -98,8 +97,6 @@ class PostController extends Controller implements HasMiddleware
     
         //Authorize
         Gate::authorize('modify', $post);
-
-        dd(Auth::user()->id, $post->user_id);
 
          //Validate
         $request->validate([
@@ -119,6 +116,7 @@ class PostController extends Controller implements HasMiddleware
             $path = Storage::disk('public')->put('posts_image', $request->image);
 
         }
+        
         //Update
         $post->update([
         'title' => $request->title,
