@@ -1,9 +1,9 @@
 <x-adminlayout>
     <div class="flex flex-wrap justify-between md:mx-auto gap-2">
-        <h1 class="font-bold text-xl md:text-2xl mt-2">Current Admin</h1>
+        <h1 class="font-bold text-xl md:text-2xl mt-2 ml-4">Current Admin</h1>
         
     </div>
-    <div class="overflow-x-auto mt-2">
+    <div class="overflow-x-auto mt-2 ml-4">
         <table class="border border-r-slate-950 border-black w-full table-auto">
             <thead>
                 <tr class="border border-black bg-gray-200">

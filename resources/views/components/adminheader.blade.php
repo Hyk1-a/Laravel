@@ -7,7 +7,7 @@
             </button>
         </div>
         <div class="flex justify-center items-center">
-            <h1 class="text-white text-sm sm:text-xl">Welcome Admin</h1>
+            <h1 class="text-white text-sm sm:text-xl">Welcome to Admin Page</h1>
         </div>
     </nav>
 </header>

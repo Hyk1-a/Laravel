@@ -1,6 +1,6 @@
 <x-adminlayout>
     <div class="flex flex-wrap justify-between md:mx-auto gap-2">
-        <h1 class="font-bold text-xl md:text-2xl mt-2">Registered User</h1>
+        <h1 class="font-bold text-xl md:text-2xl mt-2 ml-4">Registered User</h1>
             <a href="{{route('adduser')}}" class="ml-auto md:ml-0 mt-2 bg-slate-100 hover:bg-slate-400 text-black px-2 py-1 rounded-md text-xs md:text-base flex items-center gap-1">
                 <button>
                     <ion-icon name="person-add-outline"></ion-icon>
@@ -8,7 +8,7 @@
                 </button>
             </a>
     </div>
-    <div class="overflow-x-auto mt-2">
+    <div class="overflow-x-auto mt-2 ml-4">
         <table class=" border border-black w-full table-auto">
             <thead>
                 <tr class="border border-black bg-gray-200">

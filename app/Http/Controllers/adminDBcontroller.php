@@ -14,7 +14,10 @@ class adminDBcontroller extends Controller
 {
     public function index(){
 
-        return view('admin.dashboard');
+        $adminCount = User::where('usertype', 'admin')->count();
+        $userCount = User::where('usertype', 'user')->count();
+
+        return view('admin.dashboard', compact('adminCount', 'userCount'));
     }
     public function adminshow(){
 

@@ -1,5 +1,5 @@
 <x-adminlayout>
-    <h1 class="title">
+    <h1 class="title ml-4 lg:flex justify-center">
         Add a New account
     </h1>
     <div class="mx-auto max-w-screen-sm card">
