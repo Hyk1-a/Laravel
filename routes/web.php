@@ -9,6 +9,7 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 use App\Http\Controllers\PostController;
 use Doctrine\DBAL\Driver\Middleware;
 use App\Http\Middleware\Admin;
+use App\Http\Controllers\CommentController;
 
 // home page
 Route::redirect('/','posts')->name('home');    
@@ -33,9 +34,10 @@ Route::middleware('guest')->group(function(){
 Route::middleware('auth')->group(function(){
     //Dashboard
     Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth')->name('dashboard');    
-        //Logout
+    //Logout
     Route::post('/logout', [authcontroller::class,'logout'])->name('logout');
-
+    //Route for comment
+    Route::post('/posts/{post}', [CommentController::class,'store'])->name('comments.store');
 });
 
 Route::middleware(['auth', Admin::class])->group(function(){
@@ -59,3 +61,5 @@ Route::middleware(['auth', Admin::class])->group(function(){
     Route::put('/admin/edit/{id}', [adminUsercontroller::class, 'update'])->name('updateuser');
 
 });
+
+
