@@ -20,3 +20,5 @@ const sidebar = document.getElementById('sidebar');
                 sidebar.classList.add('-translate-x-full');
             }
         });
+
+

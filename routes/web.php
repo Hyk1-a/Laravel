@@ -10,6 +10,8 @@ use App\Http\Controllers\PostController;
 use Doctrine\DBAL\Driver\Middleware;
 use App\Http\Middleware\Admin;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\LikeController;
+
 
 // home page
 Route::redirect('/','posts')->name('home');    
@@ -38,6 +40,8 @@ Route::middleware('auth')->group(function(){
     Route::post('/logout', [authcontroller::class,'logout'])->name('logout');
     //Route for comment
     Route::post('/posts/{post}', [CommentController::class,'store'])->name('comments.store');
+    //like
+    Route::post('/posts/{post}/like', [LikeController::class, 'likePost']);
 });
 
 Route::middleware(['auth', Admin::class])->group(function(){

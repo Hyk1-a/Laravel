@@ -81,3 +81,10 @@
     }
     
 }
+.liked-icon {
+    color: red;
+}
+
+.not-liked-icon {
+    color: gray;
+}

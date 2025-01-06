@@ -18,7 +18,7 @@
     {{-- Title --}}
     <h2 class="font bold text-2xl">{{ $post->title }}</h2>
     {{-- Author and Date --}}
-    <div class="font-light text-xs mb-4">
+    <div class="font-light text-sm mb-4">
         <span>Posted at {{ $post->created_at->diffForHumans() }} by</span>
         <a href="{{ route('posts.user', $post->user) }}" class="text-blue-500 font-bold">{{ $post->user->username }}</a>
     </div>
@@ -34,7 +34,18 @@
         @foreach ($post->comments as $comment)
             <div class="flex justify-between gap-2 border-r-gray-500 mt-6">
                 <div class="flex justify-start">
-                    <p><strong>Commented by @if ($comment->user) {{ $comment->user->username }} @else [Deleted User] @endif :</strong><br>{{ $comment->body }}</p>
+                    <p>
+                        <strong>
+                            Commented by @if ($comment->user)
+                                <a href="{{ route('posts.user', $comment->user) }}" class="text-blue-500 ">
+                                    {{ $comment->user->username }}
+                                </a>
+                            @else
+                                [Deleted User]
+                            @endif :
+                        </strong><br>
+                        {{ $comment->body }}
+                    </p>
                 </div>
                 <div class="flex justify-end">
                     <p>{{ $comment->created_at->diffForHumans() }}</p>
@@ -64,18 +75,19 @@
             <span>{{ Str::words($post->body, 15) }}</span>
             <a href="{{ route('posts.show', $post) }}" class=" text-xs text-blue-500"> Read more &rarr; </a>
         </div>
-        <div class="flex justify-auto gap-4 rounded-md mt-4">
-            {{-- Like Icon --}}
-            <button class="flex items-center gap-2  text-blue-500 hover:text-blue-800 ml-2 mt-2">
-                <ion-icon name="thumbs-up-outline" class="hidden md:block" size="large"></ion-icon>
-                <ion-icon name="thumbs-up-outline" class="block md:hidden" size="small"></ion-icon>
 
-            </button>
+        <div class="flex justify-auto gap-4 rounded-md mt-2">
+            {{-- Like Icon --}}
+            <div class="mt-4 ml-2 ">
+                <button>
+                    <ion-icon name="heart" size="large"></ion-icon>
+                </button>
+            </div>
+
             {{-- Comment Icon --}}
-            <div class="mt-2 ml-2">
+            <div class="mt-4 ml-2 ">
                 <a href="{{ route('posts.show', $post) }}" class="text-sm text-blue-500 hover:text-blue-800 ">
-                    <ion-icon name="chatbubble-outline" class="hidden md:block" size="large"></ion-icon>
-                    <ion-icon name="chatbubble-outline" class="block md:hidden" size="small"></ion-icon>
+                    <ion-icon name="chatbubble-outline" size="large"></ion-icon>
                 </a>
             </div>
         </div>
