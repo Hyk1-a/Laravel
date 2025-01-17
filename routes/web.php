@@ -40,7 +40,7 @@ Route::middleware('auth')->group(function(){
     Route::post('/logout', [authcontroller::class,'logout'])->name('logout');
     //Route for comment
     Route::post('/posts/{post}', [CommentController::class,'store'])->name('comments.store');
-
+   
 });
 
 Route::middleware(['auth', Admin::class])->group(function(){
